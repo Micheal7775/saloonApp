@@ -1,0 +1,477 @@
+/* =========================
+   📱 MOBILE APP CONTAINER
+========================= */
+.mobile-container {
+  max-width: 420px;
+  margin: auto;
+  min-height: 100vh;
+  background: #f2f3f7;
+  padding-bottom: 90px;
+
+  position: relative;   /* 🔥 drawer boundary */
+  overflow: hidden;     /* 🔥 keep inside */
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* =========================
+   🔝 TOP NAV
+========================= */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+
+  height: 56px;
+  padding: 0 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: linear-gradient(135deg, #111, #2b2b2b);
+  color: white;
+}
+
+.menu {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.top-nav b {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* =========================
+   🌫 BACKDROP (INSIDE APP)
+========================= */
+.drawer-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 40;
+}
+
+/* =========================
+   📂 SIDE DRAWER (INSIDE APP)
+========================= */
+.side-drawer {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 75%;
+  max-width: 280px;
+  height: 100%;
+
+  background: linear-gradient(180deg, #0f172a, #020617);
+  color: white;
+
+  padding: 18px 14px;
+  z-index: 50;
+
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.side-drawer.open {
+  transform: translateX(0);
+}
+
+/* Drawer header */
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.drawer-logo {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.close-btn {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Drawer items */
+.side-drawer button,
+.side-drawer .logout {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+
+  border: none;
+  border-radius: 14px;
+  background: transparent;
+
+  color: white;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.side-drawer button:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.side-drawer .logout {
+  color: #ff6b6b;
+}
+
+/* =========================
+   👤 PROFILE / HOME CARD
+========================= */
+.profile-card {
+  margin: 14px;
+  padding: 18px;
+  background: white;
+  border-radius: 22px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.profile-card h3 {
+  margin-top: 0;
+  font-size: 17px;
+}
+
+/* =========================
+   🔥 SERVICE IMAGE CARDS
+========================= */
+.service-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 18px 0;
+}
+
+.service-item.overlay {
+  position: relative;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+
+  box-shadow: 0 10px 26px rgba(0,0,0,0.15);
+  animation: fadeSlide 0.4s ease both;
+}
+
+/* stagger animation */
+.service-item:nth-child(1) { animation-delay: 0.05s; }
+.service-item:nth-child(2) { animation-delay: 0.15s; }
+.service-item:nth-child(3) { animation-delay: 0.25s; }
+.service-item:nth-child(4) { animation-delay: 0.35s; }
+.service-item:nth-child(5) { animation-delay: 0.45s; }
+
+/* image fill */
+.service-item.overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* dark gradient */
+.service-item.overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.65),
+    rgba(0,0,0,0.15)
+  );
+}
+
+/* text on image */
+.service-text {
+  position: absolute;
+  bottom: 14px;
+  left: 16px;
+  z-index: 2;
+
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+/* tap feedback */
+.service-item.overlay:active {
+  transform: scale(0.97);
+}
+
+/* =========================
+   🚀 BOOKING CTA BUTTON
+========================= */
+.booking-btn {
+  width: 100%;
+  margin-top: 16px;
+  padding: 14px 0;
+
+  border: none;
+  border-radius: 18px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  background: linear-gradient(135deg, #4a5cff, #6a7cff);
+  color: white;
+
+  box-shadow: 0 10px 30px rgba(74,92,255,0.4);
+  cursor: pointer;
+}
+
+.booking-btn:active {
+  transform: scale(0.97);
+}
+
+/* =========================
+   👤 PROFILE VIEW CARD
+========================= */
+.profile-card {
+  margin: 14px;
+  padding: 18px;
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.profile-card h3 {
+  font-size: 17px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+/* =========================
+   🧾 PROFILE GRID
+========================= */
+.profile-grid {
+  display: grid;
+  gap: 14px;
+}
+
+/* each field */
+.profile-grid p {
+  margin: 0;
+  padding: 12px 14px;
+  background: #f7f8fc;
+  border-radius: 16px;
+  font-size: 14px;
+}
+
+/* label */
+.profile-grid b {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #7a7a7a;
+  margin-bottom: 4px;
+}
+
+/* value */
+.profile-grid span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #222;
+  line-height: 1.5;
+}
+
+/* Address block special */
+.profile-grid p:last-child span {
+  white-space: pre-line;
+}
+/* =========================
+   ✏️ EDIT PROFILE WRAPPER
+========================= */
+.profile-wrapper {
+  padding: 12px;
+}
+
+/* =========================
+   ✏️ EDIT PROFILE CARD
+========================= */
+.profile-wrapper .profile-card {
+  margin: 0;
+  padding: 18px;
+}
+
+/* Section title */
+.profile-wrapper h4 {
+  margin: 18px 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+}
+
+/* =========================
+   🧠 INPUT FIELDS
+========================= */
+.profile-wrapper input,
+.profile-wrapper select {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  outline: none;
+
+  background: #fafafa;
+  transition: border 0.2s ease;
+}
+
+.profile-wrapper input:focus,
+.profile-wrapper select:focus {
+  border-color: #4a5cff;
+  background: #fff;
+}
+
+/* =========================
+   💾 SAVE BUTTON
+========================= */
+.save-btn {
+  width: 100%;
+  padding: 14px 0;
+  margin-top: 10px;
+
+  border: none;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: 600;
+
+  background: linear-gradient(135deg, #4a5cff, #6a7cff);
+  color: white;
+
+  box-shadow: 0 10px 28px rgba(74,92,255,0.35);
+  cursor: pointer;
+}
+
+.save-btn:active {
+  transform: scale(0.97);
+}
+
+/* =========================
+   ✅ SUCCESS / ❌ ERROR
+========================= */
+.success {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #2e7d32;
+  text-align: center;
+}
+
+.error {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #d32f2f;
+  text-align: center;
+}
+
+
+/* =========================
+   🔻 BOTTOM NAV
+========================= */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100%;
+  max-width: 420px;
+  height: 64px;
+
+  background: white;
+  border-top: 1px solid #ddd;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  z-index: 30;
+}
+
+.bottom-nav span {
+  font-size: 22px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.bottom-nav span.active {
+  background: rgba(74,92,255,0.18);
+  transform: translateY(-3px);
+}
+
+/* =========================
+   ✨ ANIMATION
+========================= */
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.home-footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+.footer-brand {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+/* Premium social icons */
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+
+.footer-social a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f1f1f1;
+  color: #333;
+  font-size: 18px;
+
+  transition: all 0.2s ease;
+}
+
+.footer-social a:hover {
+  background: #1faa00;
+  color: white;
+  transform: translateY(-3px);
+}
+
+.footer-contact {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.footer-copy {
+  font-size: 11px;
+  color: #888;
+}

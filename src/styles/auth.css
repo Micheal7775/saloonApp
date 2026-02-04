@@ -1,0 +1,32 @@
+.auth-box {
+  max-width: 360px;
+  margin: 12vh auto;
+  background: white;
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.auth-box h2 {
+  margin-bottom: 20px;
+}
+
+.auth-box input {
+  margin-bottom: 12px;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 12px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  margin-top: 10px;
+}
+
+.auth-link {
+  color: #1976d2;
+  margin-top: 14px;
+  display: inline-block;
+}
