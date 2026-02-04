@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 @Entity
+@Table(name = "appointments")
 public class Appointment {
 
     @Id
@@ -13,24 +14,35 @@ public class Appointment {
     private Long id;
 
     // 🔗 Customer
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
     // 👩‍🔧 Staff (optional)
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "staff_id")
     private Staff staff;
 
-    // 📅 Date & Time
+    // 📅 Date & Time (PostgreSQL supports DATE & TIME)
+    @Column(nullable = false)
     private LocalDate appointmentDate;
+
+    @Column(nullable = false)
     private LocalTime startTime;
+
+    @Column(nullable = false)
     private LocalTime endTime;
 
-    // 🔄 Status
+    // 🔄 Status (stored as VARCHAR)
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private AppointmentStatus status;
 
     // 💰 Total
+    @Column(nullable = false)
     private double totalPrice;
+
+    @Column(nullable = false)
     private int totalDuration;
 
     // 🔥 Multiple services

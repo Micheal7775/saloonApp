@@ -3,18 +3,31 @@ package com.saloonBookingSystem.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "salon_services")
 public class SalonService {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;          // Hair Cut, Facial
-    private int durationMinutes;  // 30, 60
+    // 💇 Service name (Hair Cut, Facial)
+    @Column(nullable = false, unique = true)
+    private String name;
+
+    // ⏱ Duration in minutes (30, 60)
+    @Column(nullable = false)
+    private int durationMinutes;
+
+    // 💰 Price
+    @Column(nullable = false)
     private double price;
 
+    // 📂 Category
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private ServiceCategory category;
+
+    /* ===== Getters & Setters ===== */
 
     public Long getId() {
         return id;
@@ -55,5 +68,4 @@ public class SalonService {
     public void setCategory(ServiceCategory category) {
         this.category = category;
     }
-// getters & setters
 }

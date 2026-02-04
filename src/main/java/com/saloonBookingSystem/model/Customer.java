@@ -4,27 +4,31 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "customers")
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;   // same as User ID
+    private Long id;   // Same as User ID (shared PK)
 
-    // 🔗 Mapping with User
-    @OneToOne
+    // 🔗 Mapping with User (Shared Primary Key)
+    @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     @JoinColumn(name = "id")
     private User user;
 
     // 👤 Basic info
+    @Column(nullable = false)
     private String customerName;
+
+    @Column(nullable = false, length = 15)
     private String phoneNumber;
+
     private String gender;
+
     private LocalDate dateOfBirth;
 
     // 🏠 Address
     private String addressLine1;
-
     private String addressLine2;
     private String city;
     private String state;
@@ -34,15 +38,21 @@ public class Customer {
     // 💇 Saloon specific
     private String hairType;
     private String skinType;
+
+    @Column(length = 500)
     private String preferences;
+
+    @Column(length = 500)
     private String allergies;
 
     // 📅 Meta
     private LocalDate createdAt;
     private LocalDate updatedAt;
+
+    @Column(nullable = false)
     private boolean active;
 
-    // getters & setters
+    /* ===== Getters & Setters ===== */
 
     public Long getId() {
         return id;
@@ -195,5 +205,4 @@ public class Customer {
     public void setActive(boolean active) {
         this.active = active;
     }
-
 }

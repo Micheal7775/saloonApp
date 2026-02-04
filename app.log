@@ -1084,3 +1084,9 @@ java.lang.RuntimeException: Customer already exists
 2026-02-04T10:00:02.761+05:30  INFO 2280 --- [saloonBookingSystem] [http-nio-8080-exec-3] c.s.Service.UserService                  : Login successful for username=micheal
 2026-02-04T10:00:19.430+05:30  INFO 2280 --- [saloonBookingSystem] [http-nio-8080-exec-7] c.s.Service.CustomerService              : Customer profile created By Successfully
 2026-02-04T12:21:50.869+05:30  INFO 2280 --- [saloonBookingSystem] [http-nio-8080-exec-9] c.s.Service.CustomerService              : Customer profile created By Successfully
+2026-02-04T15:12:59.356+05:30  WARN 2280 --- [saloonBookingSystem] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=19m33s727ms930µs900ns).
+2026-02-04T15:16:00.452+05:30  INFO 2280 --- [saloonBookingSystem] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04T15:16:00.502+05:30  INFO 2280 --- [saloonBookingSystem] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-02-04T15:16:00.524+05:30  INFO 2280 --- [saloonBookingSystem] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04T15:16:00.552+05:30  INFO 2280 --- [saloonBookingSystem] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-02-04T15:16:00.558+05:30  INFO 2280 --- [saloonBookingSystem] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
