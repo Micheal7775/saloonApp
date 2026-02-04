@@ -13,18 +13,25 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+        "http://localhost:5173",
+        "https://saloonapp-4rw7.onrender.com"
+})
 public class AuthController {
 
     @Autowired
     private UserService userService;
 
     // 🔐 NORMAL LOGIN
+    // POST /user/login
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> login(
             @RequestBody LoginRequestDTO req) throws UserNotFoundException {
 
-        User user = userService.login(req.getUserName(), req.getPassword());
+        User user = userService.login(
+                req.getUserName(),
+                req.getPassword()
+        );
 
         return ResponseEntity.ok(Map.of(
                 "message", "login successful",
@@ -35,14 +42,17 @@ public class AuthController {
     }
 
     // 👤 SIGNUP
+    // POST /user/create
     @PostMapping("/create")
-    public ResponseEntity<String> createUser(@RequestBody User user) {
+    public ResponseEntity<String> createUser(
+            @RequestBody User user) {
 
         userService.createCustomer(user);
         return ResponseEntity.ok("User registered");
     }
 
     // 🔵 GOOGLE LOGIN
+    // POST /user/google
     @PostMapping("/google")
     public ResponseEntity<Map<String, Object>> googleLogin(
             @RequestBody GoogleLoginRequestDTO req) {

@@ -5,38 +5,60 @@ import com.saloonBookingSystem.Dto.CustomerUpdateRequestDTO;
 import com.saloonBookingSystem.Service.CustomerService;
 import com.saloonBookingSystem.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/customer")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+        "http://localhost:5173",
+        "https://saloonapp-4rw7.onrender.com"
+})
 public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
 
-    // 🟢 CREATE PROFILE (ONE TIME)
+    // 🟢 CREATE CUSTOMER PROFILE (ONE TIME)
+    // POST /customer
     @PostMapping
-    public Customer createCustomer(
+    public ResponseEntity<Customer> createCustomer(
             @RequestBody CustomerCreateRequestDTO dto) {
 
-        return customerService.createCustomer(dto);
+        Customer customer = customerService.createCustomer(dto);
+        return ResponseEntity.ok(customer);
     }
 
-    // 🔍 GET CUSTOMER AFTER LOGIN
+    // 🔍 GET CUSTOMER BY USER ID
+    // GET /customer/user/{userId}
     @GetMapping("/user/{userId}")
-    public Customer getCustomerByUser(
+    public ResponseEntity<Customer> getCustomerByUser(
             @PathVariable Long userId) {
 
-        return customerService.getCustomerByUser(userId);
+        Customer customer = customerService.getCustomerByUser(userId);
+
+        if (customer == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(customer);
     }
 
-    // 🔄 UPDATE PROFILE (EDIT)
+    // 🔄 UPDATE CUSTOMER PROFILE
+    // PUT /customer/{userId}
     @PutMapping("/{userId}")
-    public Customer updateCustomer(
+    public ResponseEntity<Customer> updateCustomer(
             @PathVariable Long userId,
             @RequestBody CustomerUpdateRequestDTO dto) {
 
-        return customerService.updateCustomer(userId, dto);
+        Customer updated = customerService.updateCustomer(userId, dto);
+        return ResponseEntity.ok(updated);
+    }
+
+    // 🟢 BACKEND PING (TEST)
+    // GET /customer/ping
+    @GetMapping("/ping")
+    public ResponseEntity<String> ping() {
+        return ResponseEntity.ok("Backend is alive 🚀");
     }
 }
