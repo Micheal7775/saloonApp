@@ -1,0 +1,76 @@
+.booking-container {
+  padding: 14px;
+}
+
+/* header */
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: #d32f2f;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* card */
+.booking-card {
+  background: white;
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+}
+
+/* summary */
+.summary-bar {
+  display: flex;
+  justify-content: space-between;
+  background: #f3f5ff;
+  padding: 12px 14px;
+  border-radius: 14px;
+  margin: 14px 0;
+  font-weight: 600;
+}
+
+/* date & time */
+.datetime-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.datetime-row input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+}
+
+/* book button */
+.book-btn {
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 18px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #4a5cff, #6a7cff);
+  color: white;
+  cursor: pointer;
+}
+
+.book-btn:active {
+  transform: scale(0.97);
+}
+
+.success-msg {
+  margin-top: 12px;
+  color: #2e7d32;
+  text-align: center;
+  font-size: 14px;
+}

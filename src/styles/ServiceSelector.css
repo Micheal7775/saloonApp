@@ -1,0 +1,108 @@
+/* =========================
+   💈 SERVICE SELECTOR
+========================= */
+.service-selector {
+  margin-top: 10px;
+}
+
+.service-selector h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 10px 0 14px;
+}
+
+/* =========================
+   📂 CATEGORY
+========================= */
+.service-category {
+  margin-bottom: 18px;
+}
+
+.service-category h5 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+/* =========================
+   🧱 SERVICE CARD ROW
+========================= */
+.service-card-row {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scroll-snap-type: x mandatory;
+}
+
+/* hide scrollbar (mobile feel) */
+.service-card-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================
+   🧾 SERVICE CARD
+========================= */
+.service-card {
+  min-width: 145px;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  scroll-snap-align: start;
+
+  transition: transform 0.15s ease,
+              box-shadow 0.15s ease,
+              border 0.15s ease;
+}
+
+/* image */
+.service-card img {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+}
+
+/* info */
+.service-info {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+}
+
+.service-info b {
+  font-size: 14px;
+  color: #222;
+}
+
+.service-info span {
+  font-size: 12px;
+  color: #555;
+}
+
+/* =========================
+   ✅ SELECTED STATE
+========================= */
+.service-card.active {
+  border: 2px solid #4a5cff;
+  box-shadow: 0 10px 26px rgba(74,92,255,0.35);
+}
+
+/* tap feedback */
+.service-card:active {
+  transform: scale(0.96);
+}
+
+/* =========================
+   📱 SMALL MOBILE FIX
+========================= */
+@media (max-width: 360px) {
+  .service-card {
+    min-width: 130px;
+  }
+}
